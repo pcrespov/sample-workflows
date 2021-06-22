@@ -10,12 +10,10 @@ Low-Level:
 import random
 import time
 import webbrowser
-from pathlib import Path
 
 import dask.array as da
 import numpy as np
 from dask.distributed import Client, Future, progress
-from dask.utils import is_series_like
 
 
 def open_dashboard(client: Client):
@@ -39,9 +37,16 @@ def add(x, y):
     return x + y
 
 
+def fail(x):
+    time.sleep(random.randint(1, 10))
+    raise ValueError(f"failed with {x}")
+
+
 def on_done(fut: Future):
     print(fut)
     print(fut.result())
+
+
 
 
 # samples
@@ -97,6 +102,25 @@ def sample_move_data(client):
     print(res)
 
 
+def sample_cancelation_and_exception(client: Client):
+    #  https://docs.dask.org/en/latest/futures.html#references-cancellation-and-exceptions
+    # will only compute and hold onto results for which there are active futures
+
+    x = client.submit(inc, 55)
+    y = client.submit(fail, x)
+    z = client.submit(add, x, y)
+
+    try:
+        rx, ry, rz = client.gather([x,y,z]) # will raise
+    except ValueError as err:
+        print(err, y.exception())
+
+    # z.cancel()
+
+
+
+
+
 def main():
     with Client(
         asynchronous=False,
@@ -106,9 +130,12 @@ def main():
         memory_limit="1GB",
     ) as client:
         open_dashboard(client)
-        # add here
+        #
+        # add here ---
+        #
         # sample_dependencies(client)
-        sample_move_data(client)
+        # sample_move_data(client)
+        sample_cancelation_and_exception(client)
 
 
 if __name__ == "__main__":
