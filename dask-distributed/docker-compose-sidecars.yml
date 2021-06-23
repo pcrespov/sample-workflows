@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+
+  scheduler:
+    image: local/dask-sidecar:production
+    hostname: dask-scheduler
+    ports:
+      - "8787:8787"
+      - "8786:8786"
+    volumes:
+      - ./scheduler:/work
+    command: ["dask-scheduler"]
+
+  worker:
+    image: local/dask-sidecar:production
+    hostname: dask-worker
+    volumes:
+      - ./worker:/work
+    environment:
+      - PYTHONPATH=/work
+    command: ["dask-worker", "tcp://scheduler:8786"]
+
