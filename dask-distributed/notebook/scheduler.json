@@ -1,0 +1,110 @@
+{
+  "type": "Scheduler",
+  "id": "Scheduler-cda9c2bf-869b-41ca-9a0e-f1dfc62aa802",
+  "address": "tcp://172.25.0.4:8786",
+  "services": {
+    "dashboard": 8787
+  },
+  "started": 1624438031.0478258,
+  "workers": {
+    "tcp://10.0.5.12:41827": {
+      "type": "Worker",
+      "id": "tcp://10.0.5.12:41827",
+      "host": "10.0.5.12",
+      "resources": {},
+      "local_directory": "/home/scu/dask-worker-space/worker-8b053xft",
+      "name": "tcp://10.0.5.12:41827",
+      "nthreads": 12,
+      "memory_limit": 33574789120,
+      "last_seen": 1624463568.8368673,
+      "services": {
+        "dashboard": 38895
+      },
+      "metrics": {
+        "executing": 0,
+        "in_memory": 1,
+        "ready": 0,
+        "in_flight": 0,
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "spilled_nbytes": 0,
+        "cpu": 4.0,
+        "memory": 110641152,
+        "time": 1624463568.3378665,
+        "read_bytes": 0.0,
+        "write_bytes": 0.0,
+        "num_fds": 24
+      },
+      "nanny": "tcp://10.0.5.12:36281"
+    },
+    "tcp://10.0.5.13:32983": {
+      "type": "Worker",
+      "id": "tcp://10.0.5.13:32983",
+      "host": "10.0.5.13",
+      "resources": {},
+      "local_directory": "/home/scu/dask-worker-space/worker-cm62spkn",
+      "name": "tcp://10.0.5.13:32983",
+      "nthreads": 12,
+      "memory_limit": 33574789120,
+      "last_seen": 1624463568.7665064,
+      "services": {
+        "dashboard": 42877
+      },
+      "metrics": {
+        "executing": 0,
+        "in_memory": 5,
+        "ready": 0,
+        "in_flight": 0,
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "spilled_nbytes": 0,
+        "cpu": 2.0,
+        "memory": 110641152,
+        "time": 1624463568.764507,
+        "read_bytes": 0.0,
+        "write_bytes": 0.0,
+        "num_fds": 23
+      },
+      "nanny": "tcp://10.0.5.13:38497"
+    },
+    "tcp://10.0.5.8:37427": {
+      "type": "Worker",
+      "id": "tcp://10.0.5.8:37427",
+      "host": "10.0.5.8",
+      "resources": {},
+      "local_directory": "/home/scu/dask-worker-space/worker-epa0espt",
+      "name": "tcp://10.0.5.8:37427",
+      "nthreads": 12,
+      "memory_limit": 33574789120,
+      "last_seen": 1624463568.770401,
+      "services": {
+        "dashboard": 43139
+      },
+      "metrics": {
+        "executing": 0,
+        "in_memory": 3,
+        "ready": 0,
+        "in_flight": 0,
+        "bandwidth": {
+          "total": 100000000,
+          "workers": {},
+          "types": {}
+        },
+        "spilled_nbytes": 0,
+        "cpu": 4.0,
+        "memory": 185090048,
+        "time": 1624463568.2708147,
+        "read_bytes": 285.86082844455626,
+        "write_bytes": 857.5824853336688,
+        "num_fds": 24
+      },
+      "nanny": "tcp://10.0.5.8:33487"
+    }
+  }
+}
