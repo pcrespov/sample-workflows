@@ -11,6 +11,12 @@ services:
     volumes:
       - ./scheduler:/work
     command: ["dask-scheduler"]
+    healthcheck:
+      test: ["CMD", "curl", "-Lf", "http://dask-scheduler:8787/health"]
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 10s
 
   worker:
     image: local/dask-sidecar:production
