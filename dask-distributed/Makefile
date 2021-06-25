@@ -9,15 +9,16 @@ init:
 	docker swarm init
 
 up:
-	docker-compose -f docker-compose-base.yml -f docker-compose-daskdev.yml config > docker-compose.yml
+	docker-compose -f docker-compose-common.yml -f docker-compose-daskdev.yml config > docker-compose.yml
 	docker stack deploy --compose-file docker-compose.yml ${STACKNAME}
 
 up-sidecars:
-	docker-compose -f docker-compose-base.yml -f docker-compose-sidecars.yml config > docker-compose.yml
+	docker-compose -f docker-compose-common.yml -f docker-compose-sidecars.yml config > docker-compose.yml
 	docker stack deploy --compose-file docker-compose.yml ${STACKNAME}
 
 down:
 	docker stack rm ${STACKNAME}
+	-rm docker-compose.yml
 
 
 PHONY: build-dask

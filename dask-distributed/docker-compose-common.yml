@@ -8,7 +8,9 @@ services:
     ports:
       - "8888:8888"
     environment:
-      - DASK_SCHEDULER_ADDRESS="tcp://scheduler:8786"
+      DASK_SCHEDULER_ADDRESS: tcp://scheduler:8786
+      JUPYTER_TOKEN: easy
+      PASSWORD: password
     volumes:
       - ./notebook:/home/jovyan/work
 
